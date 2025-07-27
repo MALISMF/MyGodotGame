@@ -1,0 +1,186 @@
+[gd_scene load_steps=24 format=3 uid="uid://2qftorvj0nhe"]
+
+[ext_resource type="Script" uid="uid://bphrofll68ln0" path="res://player.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://bkbjm7cy7avxt" path="res://marina-standing.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://ny6hvi87jg6y" path="res://flying.png" id="2_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://dvmth4i5xprl5" path="res://marina-side.png" id="2_d21ai"]
+[ext_resource type="Texture2D" uid="uid://b3o2tkxp4ncmj" path="res://marina-backstanding.png" id="2_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://dh683so3nhqc4" path="res://marina-backwalking1.png" id="3_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://bcowyqpmns6gk" path="res://marina-walking-1.png" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://bs2m6w506v2gh" path="res://marina-side-walking1.png" id="3_rj586"]
+[ext_resource type="Texture2D" uid="uid://3ov03xvx2ebp" path="res://marina-side-walking2.png" id="4_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://d0ao1he8hapa2" path="res://marina-walking-2.png" id="4_kdubu"]
+[ext_resource type="Texture2D" uid="uid://c88ygpmxffls5" path="res://marina-backwalking2.png" id="4_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://ce48sfspbslxt" path="res://pixil-frame-0 (16).png" id="6_d2bti"]
+[ext_resource type="Texture2D" uid="uid://bkco8segxoqd1" path="res://pixil-frame-0 (14).png" id="7_flf07"]
+[ext_resource type="Texture2D" uid="uid://bi80ynjg7cwy3" path="res://pixil-frame-0 (15).png" id="8_k73cj"]
+[ext_resource type="Texture2D" uid="uid://bc2ci82jftwji" path="res://icon.svg" id="8_rj586"]
+[ext_resource type="Texture2D" uid="uid://dwv4fkn8m4nf8" path="res://Pixilart selection.png" id="12_k73cj"]
+[ext_resource type="Script" uid="uid://cu63slttfqseh" path="res://marina_movement.gd" id="12_x0ka3"]
+[ext_resource type="Script" uid="uid://dtrx3wub8ncu8" path="res://player_shooting.gd" id="13_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://bgj5g0goleydt" path="res://Pixilart selection (3).png" id="13_fs4d3"]
+[ext_resource type="Texture2D" uid="uid://bf5yx1lafuie7" path="res://Pixilart selection (2).png" id="14_7vxoj"]
+[ext_resource type="PackedScene" uid="uid://cd6dwrtciqt1t" path="res://Interface.tscn" id="21_7vxoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(3.25, 9.875)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d21ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x0ka3")
+}],
+"loop": true,
+"name": &"back-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0h7mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nr8wp")
+}],
+"loop": true,
+"name": &"back-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4d7sh")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_d2bti")
+}],
+"loop": true,
+"name": &"side-back-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_flf07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k73cj")
+}],
+"loop": true,
+"name": &"side-back-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d21ai")
+}],
+"loop": true,
+"name": &"side-front-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rj586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4d7sh")
+}],
+"loop": true,
+"name": &"side-front-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_k73cj")
+}],
+"loop": true,
+"name": &"side-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fs4d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7vxoj")
+}],
+"loop": true,
+"name": &"side-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0hol4")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q6r6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kdubu")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-1, 0)
+
+[node name="MarinaBody" type="CharacterBody2D" parent="."]
+scale = Vector2(4, 4)
+script = ExtResource("1_0e48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MarinaBody"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarinaBody"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d21ai")
+animation = &"side-walking"
+frame_progress = 0.219719
+
+[node name="Camera2D" type="Camera2D" parent="MarinaBody"]
+
+[node name="PlayerMovement" type="Node" parent="MarinaBody"]
+script = ExtResource("12_x0ka3")
+
+[node name="PlayerShooting" type="Node" parent="MarinaBody"]
+script = ExtResource("13_0h7mo")
+
+[node name="ShootRight" type="Marker2D" parent="MarinaBody"]
+position = Vector2(15, 0)
+
+[node name="ShootDown" type="Marker2D" parent="MarinaBody"]
+position = Vector2(0, 10)
+
+[node name="ShootUp" type="Marker2D" parent="MarinaBody"]
+position = Vector2(0, -15)
+
+[node name="ShootLeft" type="Marker2D" parent="MarinaBody"]
+position = Vector2(-15, 0)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = -1
+position = Vector2(566, 327)
+scale = Vector2(4.58203, 2.19922)
+texture = ExtResource("8_rj586")
+
+[node name="MainInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="Control" parent="MainInterface" instance=ExtResource("21_7vxoj")]
