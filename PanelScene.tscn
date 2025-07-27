@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c88rym23kbqss"]
+[gd_scene load_steps=5 format=3 uid="uid://c88rym23kbqss"]
 
 [ext_resource type="Texture2D" uid="uid://bkbjm7cy7avxt" path="res://marina-standing.png" id="1_i588f"]
+[ext_resource type="Script" uid="uid://db2a8g1gybtm6" path="res://MarinaButton.gd" id="1_oojim"]
 [ext_resource type="Texture2D" uid="uid://c88ec8trmtyb3" path="res://Pixilart selection (6).png" id="2_7wlil"]
+[ext_resource type="Script" uid="uid://duj5perwm7ptc" path="res://RinaButton.gd" id="3_af6my"]
 
 [node name="Control" type="CanvasLayer"]
 
@@ -24,10 +26,11 @@ grow_vertical = 2
 theme_override_constants/h_separation = 30
 columns = 3
 
-[node name="MarinaButton" type="Panel" parent="Panel/GridContainer"]
+[node name="MarinaButton" type="Button" parent="Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_oojim")
 
 [node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/MarinaButton"]
 layout_mode = 1
@@ -43,10 +46,11 @@ texture = ExtResource("1_i588f")
 expand_mode = 5
 stretch_mode = 3
 
-[node name="RinaButton" type="Panel" parent="Panel/GridContainer"]
+[node name="RinaButton" type="Button" parent="Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("3_af6my")
 
 [node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/RinaButton"]
 layout_mode = 1

@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://diknef4m6emjo"]
+[gd_scene load_steps=11 format=3 uid="uid://diknef4m6emjo"]
 
-[ext_resource type="Texture2D" uid="uid://bc2ci82jftwji" path="res://icon.svg" id="1_b3u57"]
 [ext_resource type="Texture2D" uid="uid://dyjv0wpckbsr8" path="res://Pixilart selection (8).png" id="2_kej84"]
 [ext_resource type="Script" uid="uid://dyi7lkpyxlxcb" path="res://rina_movement.gd" id="2_lwx7b"]
 [ext_resource type="Texture2D" uid="uid://dnc34jqvd1kfp" path="res://Pixilart selection (12).png" id="3_2ff6h"]
 [ext_resource type="Texture2D" uid="uid://bp42u605exi35" path="res://Pixilart selection (10).png" id="3_ey3bs"]
 [ext_resource type="Texture2D" uid="uid://c88ec8trmtyb3" path="res://Pixilart selection (6).png" id="3_kej84"]
 [ext_resource type="Texture2D" uid="uid://wbt2nuylx41j" path="res://Pixilart selection (7).png" id="3_xw5rx"]
-[ext_resource type="PackedScene" uid="uid://cd6dwrtciqt1t" path="res://Interface.tscn" id="5_ey3bs"]
 [ext_resource type="Script" uid="uid://5ayku3sfchur" path="res://player_shielding.gd" id="6_kej84"]
 [ext_resource type="Texture2D" uid="uid://b0fjbeenqjobx" path="res://Pixilart selection (9).png" id="7_xw5rx"]
 
@@ -97,49 +95,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="RinaNode" type="CharacterBody2D"]
+position = Vector2(1, 1)
+scale = Vector2(5, 5)
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-z_index = -1
-position = Vector2(566, 327)
-scale = Vector2(4.58203, 2.19922)
-texture = ExtResource("1_b3u57")
-
-[node name="RinaBody" type="CharacterBody2D" parent="."]
-scale = Vector2(4, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RinaBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_nk1mk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RinaBody"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.25, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6up2x")
 animation = &"side-back-walking"
 
-[node name="Camera2D" type="Camera2D" parent="RinaBody"]
-
-[node name="PlayerMovement" type="Node" parent="RinaBody"]
+[node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource("2_lwx7b")
 
-[node name="PlayerShielding" type="Node" parent="RinaBody"]
+[node name="PlayerShielding" type="Node" parent="."]
 script = ExtResource("6_kej84")
 
-[node name="Shield" type="Sprite2D" parent="RinaBody"]
+[node name="Shield" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.439216)
 position = Vector2(-1, -2.5)
 scale = Vector2(3.37891, 3.48333)
 texture = ExtResource("7_xw5rx")
 
-[node name="MainInterface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 60.0
-offset_right = 100.0
-offset_bottom = 40.0
-
-[node name="Control" parent="MainInterface" instance=ExtResource("5_ey3bs")]
+[node name="Camera2D" type="Camera2D" parent="."]

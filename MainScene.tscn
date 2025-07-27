@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1s00ove4wqxv"]
+
+[ext_resource type="PackedScene" uid="uid://cd6dwrtciqt1t" path="res://Interface.tscn" id="1_x4av3"]
+[ext_resource type="Script" uid="uid://dpktht0bnbuc5" path="res://CreateBody.gd" id="2_rpqi1"]
+[ext_resource type="Texture2D" uid="uid://bc2ci82jftwji" path="res://icon.svg" id="3_rpqi1"]
+
+[node name="MainSceneNode" type="Node2D"]
+script = ExtResource("2_rpqi1")
+
+[node name="MainInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="Control" parent="MainInterface" instance=ExtResource("1_x4av3")]
+
+[node name="FloorNode" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorNode"]
+z_index = -1
+position = Vector2(566, 327)
+scale = Vector2(4.58203, 2.19922)
+texture = ExtResource("3_rpqi1")
+
+[node name="MainCharacter" type="CharacterBody2D" parent="."]
+scale = Vector2(5, 5)

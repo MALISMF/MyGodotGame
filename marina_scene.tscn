@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=3 uid="uid://2qftorvj0nhe"]
+
+[ext_resource type="Texture2D" uid="uid://b3o2tkxp4ncmj" path="res://marina-backstanding.png" id="2_muvy7"]
+[ext_resource type="Texture2D" uid="uid://dh683so3nhqc4" path="res://marina-backwalking1.png" id="3_rymw6"]
+[ext_resource type="Texture2D" uid="uid://c88ygpmxffls5" path="res://marina-backwalking2.png" id="4_26p5y"]
+[ext_resource type="Texture2D" uid="uid://ny6hvi87jg6y" path="res://flying.png" id="5_aa5it"]
+[ext_resource type="Texture2D" uid="uid://ce48sfspbslxt" path="res://pixil-frame-0 (16).png" id="6_5370q"]
+[ext_resource type="Texture2D" uid="uid://bkco8segxoqd1" path="res://pixil-frame-0 (14).png" id="7_i78d6"]
+[ext_resource type="Texture2D" uid="uid://bi80ynjg7cwy3" path="res://pixil-frame-0 (15).png" id="8_ipe21"]
+[ext_resource type="Texture2D" uid="uid://dvmth4i5xprl5" path="res://marina-side.png" id="9_xkkfg"]
+[ext_resource type="Texture2D" uid="uid://bs2m6w506v2gh" path="res://marina-side-walking1.png" id="10_uunb3"]
+[ext_resource type="Texture2D" uid="uid://3ov03xvx2ebp" path="res://marina-side-walking2.png" id="11_4g8d2"]
+[ext_resource type="Texture2D" uid="uid://dwv4fkn8m4nf8" path="res://Pixilart selection.png" id="12_blrm5"]
+[ext_resource type="Texture2D" uid="uid://bgj5g0goleydt" path="res://Pixilart selection (3).png" id="13_uafi6"]
+[ext_resource type="Texture2D" uid="uid://bf5yx1lafuie7" path="res://Pixilart selection (2).png" id="14_syga7"]
+[ext_resource type="Texture2D" uid="uid://bkbjm7cy7avxt" path="res://marina-standing.png" id="15_tmffo"]
+[ext_resource type="Texture2D" uid="uid://bcowyqpmns6gk" path="res://marina-walking-1.png" id="16_tsh33"]
+[ext_resource type="Texture2D" uid="uid://d0ao1he8hapa2" path="res://marina-walking-2.png" id="17_1wy18"]
+[ext_resource type="Script" uid="uid://cu63slttfqseh" path="res://marina_movement.gd" id="18_axcan"]
+[ext_resource type="Script" uid="uid://dtrx3wub8ncu8" path="res://player_shooting.gd" id="19_eih3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(3.25, 9.875)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d21ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_muvy7")
+}],
+"loop": true,
+"name": &"back-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rymw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_26p5y")
+}],
+"loop": true,
+"name": &"back-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aa5it")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5370q")
+}],
+"loop": true,
+"name": &"side-back-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i78d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ipe21")
+}],
+"loop": true,
+"name": &"side-back-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_xkkfg")
+}],
+"loop": true,
+"name": &"side-front-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_uunb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4g8d2")
+}],
+"loop": true,
+"name": &"side-front-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_blrm5")
+}],
+"loop": true,
+"name": &"side-standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_uafi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_syga7")
+}],
+"loop": true,
+"name": &"side-walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_tmffo")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_tsh33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1wy18")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="MarinaNode" type="CharacterBody2D"]
+position = Vector2(-1, 0)
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d21ai")
+animation = &"side-walking"
+frame_progress = 0.219719
+
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource("18_axcan")
+
+[node name="PlayerShooting" type="Node" parent="."]
+script = ExtResource("19_eih3r")
+
+[node name="ShootRight" type="Marker2D" parent="."]
+position = Vector2(15, 0)
+
+[node name="ShootDown" type="Marker2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="ShootUp" type="Marker2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="ShootLeft" type="Marker2D" parent="."]
+position = Vector2(-15, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
